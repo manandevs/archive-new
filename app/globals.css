@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+:root {
+  --background: #08090a;
+  --foreground: #f7f8f8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-inter: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  scroll-behavior: smooth;
+}
+
+* {
+  scrollbar-color: rgba(255, 255, 255, 0.22) #141516;
+}
+
+*::-webkit-scrollbar-track {
+  background: #141516;
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  border: 2px solid #141516;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.32);
+}
+
+*::-webkit-scrollbar-corner {
+  background: #141516;
+}
+
+/* Mobile nav <details open>: viewport lock on small screens only */
+@media (max-width: 1023px) {
+  body.header-mobile-nav-open {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.particle-float {
+  animation: float var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.border-beam-light {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size:
+      0.5% 0.5%,
+      50% 50%;
+    background-image:
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent),
+      linear-gradient(#fa903e, #08090a00),
+      linear-gradient(transparent, transparent),
+      linear-gradient(transparent, transparent);
+    animation: rotate 4s linear infinite;
+  }
+}
+
+/* animations key frames */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  animation: slide var(--slide-duration, 24s) linear infinite;
+}
+
+@theme {
+  --animate-bg-shine: bg-shine 2.1s linear infinite;
+
+  @keyframes bg-shine {
+    from {
+      background-position: 0 0;
+    }
+
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+.animate-bg-shine {
+  animation: bg-shine 2.1s linear infinite;
+}
+
+@keyframes bg-shine {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+
+@layer utilities {
+  .btn-animate {
+    @apply animate-bg-shine bg-[length:200%_100%] duration-[2200ms] bg-[linear-gradient(110deg,#FFF,40%,#00000069,55%,#FFF)]
+  }
+}
