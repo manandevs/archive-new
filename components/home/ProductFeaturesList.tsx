@@ -25,7 +25,7 @@ export default function ProductFeaturesList() {
         'Exception queue with one-click approve / escalate / reject',
         'Policy coverage gaps surfaced automatically'
       ],
-      image: "/images/monitor.png"
+      image: "/images/monitor.svg"
     },
     {
       fig: 'FIG 2.3 – EVIDENCE',
@@ -37,7 +37,7 @@ export default function ProductFeaturesList() {
         '10 years tamper-evident retention, built in from day one',
         'Cryptographic proof receipts for every action included'
       ],
-      image: "/images/evidence.png"
+      image: "/images/evidence.svg"
     }
   ];
 
@@ -181,10 +181,10 @@ export default function ProductFeaturesList() {
                   alt={section.title}
                   width={1200}
                   height={1200}
-                  className='w-141 h-95'
+                  className='w-141 h-95 z-20'
                 />
 
-                <div className="absolute bottom-0 left-0 h-1/8 w-full bg-linear-to-t from-[#08090A] to-transparent" />
+                <div className="absolute bottom-0 left-0 h-1/6 w-full bg-linear-to-t from-[#08090A] via-[#08090abe] to-transparent z-50" />
               </motion.div>
             </div>
           );

@@ -25,7 +25,7 @@ type ProcessStep = {
 };
 
 type TabbedProcessPanelProps = {
-  figureLabel: string;
+  // figureLabel: string;
   steps: ProcessStep[];
   initialActiveIndex?: number;
   panelClassName?: string;
@@ -43,7 +43,7 @@ type TabbedProcessPanelProps = {
 };
 
 const TabbedProcessPanel = ({
-  figureLabel,
+  // figureLabel,
   steps,
   initialActiveIndex = 0,
   panelClassName,

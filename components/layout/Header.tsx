@@ -23,26 +23,22 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
+  // Control body lock when mobile menu opens/closes
   useEffect(() => {
     document.body.classList.toggle("header-mobile-nav-open", menuOpen);
     return () => document.body.classList.remove("header-mobile-nav-open");
   }, [menuOpen]);
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
+  // Handle scroll listener and active section updating
   useEffect(() => {
     if (pathname !== "/") {
-      setActiveSection("");
       return;
     }
 
     const handleScroll = () => {
-      // Cleaned IDs matching your navItems links (#platform, #aarf-standard, #design-partners)
-      const sections = ["platform", "aarf-standard", "design-partners"];
+      const sections = ["aarf-standard", "design-partners"];
       let current = "";
-      
+
       sections.forEach((id) => {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 140) {
@@ -86,7 +82,7 @@ const Header = () => {
   // Helper logic to verify if a nav item matches the current route or anchor section
   const checkIsActive = (link: string) => {
     if (link.includes("#")) {
-      return activeSection === link.split("#")[1] && pathname === "/";
+      return pathname === "/" && activeSection === link.split("#")[1];
     }
     return pathname === link;
   };
@@ -157,6 +153,7 @@ const Header = () => {
               href="/"
               className="flex items-center gap-2.5"
               onClick={(e) => {
+                setMenuOpen(false);
                 if (pathname === "/") {
                   e.preventDefault();
                   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -198,24 +195,6 @@ const Header = () => {
                   >
                     {item.label}
                   </Link>
-
-                  {/* Underline renders and expands into view dynamically when active */}
-                  <motion.span
-                    className="absolute left-0 bottom-0 h-px w-full bg-gradient-to-r from-transparent via-[#FE9900] to-transparent origin-center pointer-events-none"
-                    initial={{ scaleX: 0, opacity: 0 }}
-                    animate={{
-                      scaleX: isActive ? 1 : 0,
-                      opacity: isActive ? 1 : 0,
-                    }}
-                    variants={{
-                      hover: {
-                        scaleX: 1,
-                        opacity: 1,
-                        transition: { duration: 0.3, ease: "easeOut" }
-                      }
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  />
                 </motion.div>
               );
             })}
@@ -225,15 +204,17 @@ const Header = () => {
             variants={itemVariants}
             className="flex min-w-0 shrink-0 items-center gap-2"
           >
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                href="#"
-                onClick={(e) => { e.preventDefault(); setShowRequest(true); }}
-                className="btn-animate whitespace-nowrap rounded-full bg-[#F7F8F8] text-black px-2.5 py-1.5 text-[12px] sm:px-5 sm:py-2 sm:text-[13px] font-medium"
-              >
-                Apply for early access
-              </Link>
-            </motion.div>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setMenuOpen(false);
+                setShowRequest(true);
+              }}
+              className="whitespace-nowrap rounded-full bg-[#F7F8F8] text-black px-2.5 py-1.5 text-[12px] sm:px-5 sm:py-2 sm:text-[13px] font-medium"
+            >
+              Apply for early access
+            </Link>
 
             <button
               type="button"

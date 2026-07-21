@@ -150,7 +150,6 @@ const Sectors = () => {
             <motion.article
               key={item.title}
               variants={cardVariants}
-              whileHover={{ y: -5 }}
               className={cn(
                 "min-h-[338px] border-b border-white/8 px-6 py-7 last:border-b-0 md:border-b-0 md:px-11 md:py-9 transition-colors duration-300",
                 idx % 2 === 0 && "sm:border-r sm:border-white/8",

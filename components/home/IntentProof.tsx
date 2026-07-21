@@ -84,7 +84,7 @@ const IntentProof = () => {
         />
 
         <motion.div
-          className="group grid grid-cols-1 md:grid-cols-3"
+          className="grid grid-cols-1 md:grid-cols-3"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -94,15 +94,12 @@ const IntentProof = () => {
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{ y: -6 }}
-              transition={{ type: "spring", stiffness: 260, damping: 22 }}
-              className={`relative flex flex-col text-left px-6 py-4 md:px-8 lg:px-11 md:py-6 lg:py-9 ${index !== 0 ? 'md:border-l md:border-neutral-900' : ''
-                }`}
+              className={`relative flex flex-col text-left px-6 py-4 md:px-8 lg:px-11 md:py-6 lg:py-9 ${index !== 0 ? 'md:border-l md:border-neutral-900' : ''}`}
             >
               {index !== 0 && (
                 <motion.div
                   variants={accentLineVariants}
-                  className="hidden md:block absolute left-0 top-0 bottom-0 w-px transition-all duration-300 group-hover:bg-linear-to-b group-hover:from-transparent group-hover:via-[#FE9900]/40 group-hover:to-transparent origin-top"
+                  className="hidden md:block absolute left-0 top-0 bottom-0 w-px"
                 />
               )}
               <motion.div variants={cardContentVariants}>

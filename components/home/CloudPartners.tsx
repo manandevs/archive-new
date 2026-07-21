@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import FadeUp from "../shared/FadeUp";
 
@@ -23,14 +22,6 @@ const statGridVariants = {
   },
 };
 
-const statCardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: easeOut },
-  },
-};
 
 // Title reveals with a soft upward unblur + tracking settle, distinct from the
 // card's own fade/slide so the two layers feel choreographed rather than identical.
@@ -55,18 +46,6 @@ const descriptionVariants = {
 };
 
 
-const underlineVariants = {
-  hidden: { scaleX: 0, opacity: 0 },
-  visible: {
-    scaleX: 1,
-    opacity: [0, 1, 0],
-    transition: {
-      scaleX: { duration: 0.5, ease: easeOut, delay: 0.5 },
-      opacity: { duration: 1.4, times: [0, 0.3, 1], delay: 0.5 },
-    },
-  },
-};
-
 interface StatCardProps {
   title: string;
   description: string;
@@ -87,21 +66,6 @@ const StatCard = ({ title, description }: StatCardProps) => {
         className="text-xl md:text-[20px] font-bold tracking-wide mb-1 text-gray-100 relative"
       >
         {isNumericPercent ? <CountUp value={title} /> : title}
-        
-        <motion.span
-          className="absolute left-0 -bottom-1 h-px w-full bg-gradient-to-r from-transparent via-[#FE9900] to-transparent origin-center"
-          variants={{
-            rest: { scaleX: 0, opacity: 0 },
-            hover: {
-              scaleX: 1,
-              opacity:1,
-              transition: {
-                scaleX: { duration: 0.45, ease: "easeOut", delay: 0.5 },
-                opacity: { duration: 0.35, delay: 0.5 },
-              },
-            },
-          }}
-        />
       </motion.h2>
       <motion.p
         variants={descriptionVariants}
@@ -165,7 +129,7 @@ const CloudPartners = () => {
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.65, ease: easeOut }}
       >
-        <motion.div className="absolute left-1/2 top-[50%] h-auto w-[300vw] aspect-square -translate-x-1/2 rounded-full border border-white shadow-[0px_4px_32px_64px_rgba(254,153,0,0.08)]"/>
+        <motion.div className="absolute left-1/2 top-[50%] h-auto w-[300vw] aspect-square -translate-x-1/2 rounded-full border border-white shadow-[0px_4px_32px_64px_rgba(254,153,0,0.08)]" />
         <div className="absolute top-0 left-0 h-full w-1/3 bg-linear-to-r from-[#08090A] via-25% via-[#08090A] to-transparent" />
         <div className="absolute top-0 right-0 h-full w-1/3 bg-linear-to-l from-[#08090A] via-25% via-[#08090A] to-transparent" />
         <div className="absolute top-0 left-0 h-1/3 w-full bg-linear-to-b from-[#08090A] via-0% via-[#08090A] to-transparent " />
@@ -173,7 +137,7 @@ const CloudPartners = () => {
       </motion.div>
 
       <motion.div className="relative mt-6 hidden h-36 w-[75vw] overflow-hidden md:h-48 lg:mt-14 lg:block lg:h-64">
-        <motion.div className="absolute left-1/2 top-[50%] h-auto w-1320 aspect-square -translate-x-1/2 rounded-full border border-white shadow-[0px_4px_32px_64px_rgba(254,153,0,0.08)]"/>
+        <motion.div className="absolute left-1/2 top-[50%] h-auto w-1320 aspect-square -translate-x-1/2 rounded-full border border-white shadow-[0px_4px_32px_64px_rgba(254,153,0,0.08)]" />
         <div className="absolute top-0 left-0 h-full w-[10%] bg-linear-to-r from-[#08090A] via-25% via-[#08090A] to-transparent" />
         <div className="absolute top-0 right-0 h-full w-[10%] bg-linear-to-l from-[#08090A] via-25% via-[#08090A] to-transparent" />
         <div className="absolute top-0 left-0 h-[10%] w-full bg-linear-to-b from-[#08090A] via-0% via-[#08090A] to-transparent " />

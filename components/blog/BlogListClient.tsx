@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BlogCard from "./BlogCard";
 import BlogCategoryFilters from "./BlogCategoryFilters";
@@ -21,6 +21,17 @@ const BlogListClient = ({ categories, posts }: BlogListClientProps) => {
   const [query, setQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
+  // Handle resets in event handlers instead of useEffect to prevent cascading renders
+  const handleCategoryChange = (newCategory: BlogCategory) => {
+    setCategory(newCategory);
+    setVisibleCount(INITIAL_VISIBLE);
+  };
+
+  const handleQueryChange = (newQuery: string) => {
+    setQuery(newQuery);
+    setVisibleCount(INITIAL_VISIBLE);
+  };
+
   const filtered = useMemo(() => {
     return posts.filter((post) => {
       const categoryMatch = category === "All" || post.category === category;
@@ -37,10 +48,6 @@ const BlogListClient = ({ categories, posts }: BlogListClientProps) => {
     const rest = filtered.filter((post) => !post.featured);
     return [...featuredHead, ...rest];
   }, [filtered]);
-
-  useEffect(() => {
-    setVisibleCount(Math.min(INITIAL_VISIBLE, ordered.length));
-  }, [ordered]);
 
   const { featured, grid } = useMemo(() => {
     const visible = ordered.slice(0, visibleCount);
@@ -80,11 +87,11 @@ const BlogListClient = ({ categories, posts }: BlogListClientProps) => {
         <BlogCategoryFilters
           categories={categories}
           activeCategory={category}
-          onCategoryChange={setCategory}
+          onCategoryChange={handleCategoryChange}
         />
         <BlogSearchBar
           value={query}
-          onChange={setQuery}
+          onChange={handleQueryChange}
         />
       </motion.div>
 

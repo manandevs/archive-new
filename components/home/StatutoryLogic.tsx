@@ -91,7 +91,7 @@ const StatutoryLogic = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-335 w-full grid grid-cols-1 md:grid-cols-2 border border-[#FFFFFF14] mt-12 md:mt-20 lg:mt-32">
+      <div className="max-w-335 w-full grid grid-cols-1 md:grid-cols-2 border border-[#FFFFFF14] mt-12 md:mt-20 lg:mt-32 rounded-sm">
         {featuresData.map((item, index) => {
           const borderClasses = `
             border-[#FFFFFF14] flex flex-col justify-between min-h-[460px]
@@ -108,7 +108,6 @@ const StatutoryLogic = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
-              whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 280, damping: 24 }}
               className={borderClasses}
             >
@@ -127,7 +126,7 @@ const StatutoryLogic = () => {
                 className="w-full flex items-center justify-center relative mx-auto my-15.5 p-4"
                 variants={imageVariants}
               >
-                <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3, ease: "easeOut" }}>
+                <div>
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -135,7 +134,7 @@ const StatutoryLogic = () => {
                     height={500}
                     className="h-73.5 w-90"
                   />
-                </motion.div>
+                </div>
 
                 <div className="absolute bottom-0 left-0 h-1/3 w-full bg-linear-to-t from-[#08090A] to-transparent" />
               </motion.div>

@@ -223,8 +223,7 @@ export default function AARFFramework() {
                     >
                         <motion.a
                             href="#download"
-                            className="btn-animate inline-flex items-center justify-center gap-2 bg-white text-[15px] font-medium text-[#08090A] px-5 py-2.75 rounded-full"
-                            whileHover={{ scale: 1.03 }}
+                            className="inline-flex items-center justify-center gap-2 bg-white text-[15px] font-medium text-[#08090A] px-5 py-2.75 rounded-full cursor-pointer"
                             whileTap={{ scale: 0.97 }}
                             transition={{ duration: 0.2, ease: easeOut }}
                         >
@@ -240,8 +239,7 @@ export default function AARFFramework() {
                             href="https://github.com"
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center justify-center gap-2 text-[#F7F8F8] font-medium text-[15px] px-4 py-2.5"
-                            whileHover={{ scale: 1.03 }}
+                            className="inline-flex items-center justify-center gap-2 text-[#F7F8F8] font-medium text-[15px] px-4 py-2.5 cursor-pointer"
                             whileTap={{ scale: 0.97 }}
                             transition={{ duration: 0.2, ease: easeOut }}
                         >

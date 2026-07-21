@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { delay } from "sanity/migrate";
 
 const listVariants = {
   hidden: {},

@@ -86,7 +86,6 @@ const GlobalCompliance = () => {
             <motion.article
               key={card.title}
               variants={cardVariants}
-              whileHover={{ y: -5 }}
               className={cn(
                 "min-h-95 border-b border-white/8 px-6 py-8 last:border-b-0 sm:px-8 lg:border-b-0 lg:px-11 lg:py-9 transition-colors duration-300",
                 idx < complianceCards.length - 1 &&

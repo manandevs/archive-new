@@ -92,12 +92,12 @@ const FinalCta = () => {
           <div className="flex flex-col items-center gap-9">
             <a
               href="#"
-              className="btn-animate inline-flex items-center justify-center gap-2 bg-white text-[15px] font-medium text-[#08090A] px-5 py-2.75 rounded-full"
+              className="inline-flex items-center justify-center gap-2 bg-white text-[15px] font-medium text-[#08090A] px-5 py-2.75 rounded-full cursor-pointer"
             >
               Apply for design partner access <IoArrowForwardSharp size={18} strokeWidth={1} />
             </a>
 
-            <p className="text-center text-[#8A8F98] font-medium text-[15px] ">
+            <p className="text-center text-[#8A8F98] font-medium text-[15px]">
               5 spots remaining · 2-minute application
             </p>
           </div>
@@ -169,7 +169,6 @@ const Cards = () => {
         <motion.article
           key={card.title}
           variants={cardVariants}
-          whileHover={{ y: -8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="px-11 py-9 min-h-[294px] border-b border-r-0 md:border-r md:border-b-0 border-[#1E1E1E] md:px-11 md:py-9 text-start">
 

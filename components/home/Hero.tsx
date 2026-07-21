@@ -14,7 +14,7 @@ const Hero = () => {
   const [showNewsletter, setShowNewsletter] = useState(false);
 
   return (
-    <section className="relative mb-8 pt-16 md:pt-28 lg:pt-45 w-full max-w-screen" id="platform">
+    <section className="relative mb-8 pt-16 md:pt-28 lg:pt-45 w-full max-w-screen">
       <div
         className="absolute inset-0 left-1/2 top-[40%] hidden h-250 w-full max-w-360 -translate-1/2 lg:block"
         style={{
@@ -52,24 +52,18 @@ const Hero = () => {
             }}
             className="mt-8 flex flex-col items-center justify-center gap-4 text-[15px] sm:flex-row sm:flex-wrap sm:gap-6"
           >
-            <motion.button
+            <button
               onClick={() => setShowRequest(true)}
-              whileHover={{ y: -2, scale: 1.01 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="btn-animate rounded-full border border-white/20 bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-white/90"
+              className="rounded-full border border-white/20 bg-white px-6 py-3 font-medium text-black cursor-pointer"
             >
               Join the design partner programme
-            </motion.button>
-            <motion.button
+            </button>
+            <button
               onClick={() => setShowNewsletter(true)}
-              whileHover={{ y: -2, scale: 1.01 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="font-medium text-[#8A8F98] transition-colors hover:text-[#d3d8df] flex justify-center items-center gap-1"
+              className="font-medium text-[#8A8F98] transition-colors hover:text-[#d3d8df] flex justify-center items-center gap-1 cursor-pointer"
             >
-              Download the AARF specification <IoIosArrowRoundForward size={24} strokeWidth={1}/>
-            </motion.button>
+              Download the AARF specification <IoIosArrowRoundForward size={24} strokeWidth={1} />
+            </button>
           </motion.div>
         </div>
         <motion.div
@@ -88,7 +82,7 @@ const Hero = () => {
           />
         </motion.div>
         <div
-          className="absolute top-full left-1/2 z-10 hidden h-53.75 w-full -translate-x-1/2 -translate-y-30.75 md:mx-6 md:block xl:mx-8"
+          className="absolute top-full block left-1/2 z-10 h-53.75 w-full -translate-x-1/2 -translate-y-30.75 md:mx-6 xl:mx-8"
           style={{
             background:
               "linear-gradient(180deg, rgba(8,9,10,0) 0%, #08090A 44.23%)",
